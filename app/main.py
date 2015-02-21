@@ -104,6 +104,12 @@ def move():
         'taunt': 'battlesnake-python!'
     })
 
+#Callum doing things don't worry about this
+def eachTurnMove(curX, curY, nextX, nextY):
+
+    if(curX - nextX > 0):
+        #goLeft
+
 
 @bottle.post('/end')
 def end():
