@@ -15,12 +15,31 @@ def getDistance(item):
 
     return dx + dy
 
+def getDistance(itemA, itemB):
+
+    dx = itemA[0] - itemB[0]
+    dy = itemA[1] - itemB[1]
+
+    dx = math.fabs(dx)
+    dy = math.fabs(dy)
+
+    return dx + dy
+
 #sorts min-max
 def sortListByDist(unsorted):
     return sorted(unsorted, key=getDistance)
 
 
-def findBestFood(foodList):
+def findBestFood(orderedFoodList, orderedSnakeList):
+
+
+    item = foodList[0]
+    for i in range(0, len(orderedSnakeList)):
+        if( getDistance(item, orderedSnakeList[i]) < getDistance(item, ourSnakeHead)):
+            #someone is closer
+            pass
+
+
 
     return foodList[0]
 
@@ -90,7 +109,7 @@ def move():
 
 
     snakeHeads = []
-    for i in range(0, length(snakes)):
+    for i in range(0, len(snakes)):
         snakeHeads.add(snakes["coords"][0])
 
     global ourSnakeHead
