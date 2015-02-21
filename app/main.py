@@ -3,10 +3,12 @@ import json
 import math
 
 
-def getDistance(item, snakePos):
+ourSnakeHead = [0,0]
 
-    dx = snakePos[0] - item[0]
-    dy = snakePos[1] - item[1]
+def getDistance(item):
+
+    dx = ourSnakeHead[0] - item[0]
+    dy = ourSnakeHead[1] - item[1]
 
     dx = math.fabs(dx)
     dy = math.fabs(dy)
@@ -14,15 +16,15 @@ def getDistance(item, snakePos):
     return dx + dy
 
 #sorts min-max
-def sortListByDist(unsorted, snakePos):
-    return sorted(unsorted, key=getDistance(snakePos))
+def sortListByDist(unsorted):
+    return sorted(unsorted, key=getDistance)
 
 
 
-def checkFood(foodList, enemySnakePos, ourPos):
+def checkFood(foodList, enemySnakePos):
 
-    sortedFood = sortListByDist(foodList, ourPos)
-    sortedEnemyPos = sortListByDist(enemySnakePos, ourPos)
+    sortedFood = sortListByDist(foodList)
+    sortedEnemyPos = sortListByDist(enemySnakePos)
 
 
 
@@ -81,8 +83,10 @@ def move():
     food = data["food"]
     snakes = data["snakes"]
 
+    global ourSnakeHead
 
-    checkFood(food, snakes, [0,0])
+    ourSnakeHead = [0,0] # We need to update this somehow
+    checkFood(food, snakes)
 
 
 
@@ -99,7 +103,10 @@ def end():
     return json.dumps({})
 
 
-if __name__ == "__move__":
+def main():
+    move()
+
+if __name__ == "__main__":
     move()
 
 # Expose WSGI app
