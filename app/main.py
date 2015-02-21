@@ -26,7 +26,7 @@ def checkFood(foodList, enemySnakePos):
     sortedFood = sortListByDist(foodList)
     sortedEnemyPos = sortListByDist(enemySnakePos)
 
-
+    return moveDown() #determine which way to go here
 
 
 
@@ -86,10 +86,14 @@ def move():
     global ourSnakeHead
 
     ourSnakeHead = [0,0] # We need to update this somehow
-    checkFood(food, snakes)
 
+    if(True):#if go for food
+        return checkFood(food, snakes)
+    elif(False): #not going for food
+        pass #do nothing, remove later
+    #more cases here
 
-
+    #default code - to be removed
     return json.dumps({
         'move': 'left',
         'taunt': 'battlesnake-python!'
