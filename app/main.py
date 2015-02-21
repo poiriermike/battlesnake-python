@@ -116,7 +116,9 @@ def move():
     print data
     food = data["food"]
     snakes = data["snakes"]
+    board = data['board']
 
+    print check_up(snakes[snakeName][0], board)
 
     snakeHeads = []
     for i in range(0, len(snakes)):
