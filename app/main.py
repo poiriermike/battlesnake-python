@@ -4,7 +4,7 @@ import math
 
 
 ourSnakeHead = [0,0]
-
+snakeName = "cscusnake"
 def getDistance(item):
 
     dx = ourSnakeHead[0] - item[0]
@@ -20,6 +20,11 @@ def sortListByDist(unsorted):
     return sorted(unsorted, key=getDistance)
 
 
+def findBestFood(foodList):
+
+    return foodList[0]
+
+
 
 def checkFood(foodList, enemySnakePos):
 
@@ -29,14 +34,14 @@ def checkFood(foodList, enemySnakePos):
     return moveDown() #determine which way to go here
 
 
-
-
-
-
-
-
-
-
+def check_up(location, snakes):
+    pass
+def check_down(location, snakes):
+    pass
+def check_left(location, snakes):
+    pass
+def check_right(location, snakes):
+    pass
 
 @bottle.get('/')
 def index():
@@ -52,7 +57,7 @@ def start():
     data = bottle.request.json
 
     return json.dumps({
-        'name': 'cscusnake',
+        'name': snakeName,
         'color': '#00ff00',
         'head_url': 'http://cscusnake.herokuapp.com',
         'taunt': 'battlesnake-python!'
