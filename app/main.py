@@ -15,12 +15,31 @@ def getDistance(item):
 
     return dx + dy
 
+def getDistance(itemA, itemB):
+
+    dx = itemA[0] - itemB[0]
+    dy = itemA[1] - itemB[1]
+
+    dx = math.fabs(dx)
+    dy = math.fabs(dy)
+
+    return dx + dy
+
 #sorts min-max
 def sortListByDist(unsorted):
     return sorted(unsorted, key=getDistance)
 
 
-def findBestFood(foodList):
+def findBestFood(orderedFoodList, orderedSnakeList):
+
+
+    item = foodList[0]
+    for i in range(0, len(orderedSnakeList)):
+        if( getDistance(item, orderedSnakeList[i]) < getDistance(item, ourSnakeHead)):
+            #someone is closer
+            pass
+
+
 
     return foodList[0]
 
@@ -34,13 +53,19 @@ def checkFood(foodList, enemySnakePos):
     return moveDown() #determine which way to go here
 
 
-def check_up(location, snakes):
+def check_up(location, board, distance=1):
+
+
+    if location[0] > 0:
+        if board[location[0] - 1][location[1]]['state'] != 'food' or  board[location[0] - 1][location[1]]['state'] != 'food':
+            return False
+    else:
+        return True
+def check_down(location, snakes, distance=1):
     pass
-def check_down(location, snakes):
+def check_left(location, snakes, distance=1):
     pass
-def check_left(location, snakes):
-    pass
-def check_right(location, snakes):
+def check_right(location, snakes, distance=1):
     pass
 
 @bottle.get('/')
@@ -84,13 +109,15 @@ def moveRight():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-
+    print data
     food = data["food"]
     snakes = data["snakes"]
+    board = data['board']
 
+    print check_up(snakes[snakeName][0], board)
 
     snakeHeads = []
-    for i in range(0, length(snakes)):
+    for i in range(0, len(snakes)):
         snakeHeads.add(snakes["coords"][0])
 
     global ourSnakeHead
