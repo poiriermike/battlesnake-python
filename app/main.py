@@ -116,12 +116,12 @@ def moveRight(taunt = ""):
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-    print data
+    #print (data)
     food = data["food"]
     snakes = data["snakes"]
     board = data['board']
 
-    print check_up(snakes[snakeName][0], board)
+    print (check_up(snakes[snakeName][0], board))
 
     snakeHeads = []
     for i in range(0, len(snakes)):
@@ -142,6 +142,12 @@ def move():
         'move': 'left',
         'taunt': 'battlesnake-python!'
     })
+
+#Callum doing things don't worry about this
+def eachTurnMove(curX, curY, nextX, nextY):
+
+    if(curX - nextX > 0):
+        #goLeft
 
 
 @bottle.post('/end')
