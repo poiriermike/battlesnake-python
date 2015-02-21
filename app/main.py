@@ -20,6 +20,11 @@ def sortListByDist(unsorted):
     return sorted(unsorted, key=getDistance)
 
 
+def findBestFood(foodList):
+
+    return foodList[0]
+
+
 
 def checkFood(foodList, enemySnakePos):
 
