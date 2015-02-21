@@ -146,8 +146,15 @@ def move():
 #Callum doing things don't worry about this
 def eachTurnMove(curX, curY, nextX, nextY):
 
-    if(curX - nextX > 0):
+    if(curX > nextX):
         #goLeft
+        moveLeft()
+    elif(curX < nextX):
+        #goRight
+        moveRight()
+    elif(curX == nextX):
+        #goStraight
+        None
 
 
 @bottle.post('/end')
