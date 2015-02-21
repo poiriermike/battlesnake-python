@@ -14,12 +14,15 @@ def getDistance(item, snakePos):
     return dx + dy
 
 #sorts min-max
-def sortFoodList(unsorted, snakePos):
-    return sorted(unsorted, )
+def sortListByDist(unsorted, snakePos):
+    return sorted(unsorted, key=getDistance(snakePos))
 
-def sortSnakeDist(enemeySnakeList, snakePos):
-    return sorted(enemeySnakeList, key=getDistance(snakePos))
 
+
+def checkFood(foodList, enemySnakePos, ourPos):
+
+    sortedFood = sortListByDist(foodList, ourPos)
+    sortedEnemyPos = sortListByDist(enemySnakePos, ourPos)
 
 
 
@@ -75,9 +78,11 @@ def moveRight():
 def move():
     data = bottle.request.json
 
-    list = data["food"]
-    sortFoodList(list)
+    food = data["food"]
+    snakes = data["snakes"]
 
+
+    checkFood(food, snakes, [0,0])
 
 
 
@@ -93,6 +98,9 @@ def end():
 
     return json.dumps({})
 
+
+if __name__ == "__move__":
+    move()
 
 # Expose WSGI app
 application = bottle.default_app()
