@@ -89,21 +89,25 @@ def start():
     })
 
 
-def moveUp():
+def moveUp(taunt = ""):
     return json.dumps({
-        'move': 'up'
+        'move': 'up',
+        'taunt': taunt
     })
-def moveDown():
+def moveDown(taunt = ""):
     return json.dumps({
-        'move': 'down'
+        'move': 'down',
+        'taunt': taunt
     })
-def moveLeft():
+def moveLeft(taunt = ""):
     return json.dumps({
-        'move': 'left'
+        'move': 'left',
+        'taunt': taunt
     })
-def moveRight():
+def moveRight(taunt = ""):
     return json.dumps({
-        'move': 'right'
+        'move': 'right',
+        'taunt': taunt
     })
 
 @bottle.post('/move')
@@ -135,6 +139,12 @@ def move():
         'move': 'left',
         'taunt': 'battlesnake-python!'
     })
+
+#Callum doing things don't worry about this
+def eachTurnMove(curX, curY, nextX, nextY):
+
+    if(curX - nextX > 0):
+        #goLeft
 
 
 @bottle.post('/end')
