@@ -83,12 +83,17 @@ def move():
     food = data["food"]
     snakes = data["snakes"]
 
+
+    snakeHeads = []
+    for i in range(0, length(snakes)):
+        snakeHeads.add(snakes["coords"][0])
+
     global ourSnakeHead
 
     ourSnakeHead = [0,0] # We need to update this somehow
 
     if(True):#if go for food
-        return checkFood(food, snakes)
+        return checkFood(food, snakeHeads)
     elif(False): #not going for food
         pass #do nothing, remove later
     #more cases here
