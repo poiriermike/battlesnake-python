@@ -32,16 +32,19 @@ def sortListByDist(unsorted):
 
 def findBestFood(orderedFoodList, orderedSnakeList):
 
+    for i in range(0, len(orderedFoodList)):
+        item = orderedFoodList[i]
 
-    item = foodList[0]
-    for i in range(0, len(orderedSnakeList)):
-        if( getDistance(item, orderedSnakeList[i]) < getDistance(item, ourSnakeHead)):
-            #someone is closer
-            pass
+        for j in range(0, len(orderedSnakeList)):
+            if( getDistance(item, orderedSnakeList[j]) < getDistance(item, ourSnakeHead)):
+                #someone is closer - ignore the food
+                break;
+            else: #we are closer, go for this food
+                return item #return the item position
 
 
 
-    return foodList[0]
+    return orderedFoodList[0]
 
 
 
