@@ -45,38 +45,38 @@ def check_up(location, board):
     print(len(board[0]))
     print(board[location[0] - 1][location[1]]['state'])
     if location[0] > 0:
-        if board[location[0] - 1][location[1]]['state'] != 'food' or board[location[0] - 1][location[1]]['state'] != 'empty':
-            return True
-        else:
+        if str(board[location[0] - 1][location[1]]['state']) == 'food' or str(board[location[0] - 1][location[1]]['state']) == 'empty':
             return False
+        else:
+            return True
     else:
         print("here")
         return True
 def check_down(location, board):
     if location[0] > (len(board) - 1):
-        if board[location[0] + 1][location[1]]['state'] != 'food' or board[location[0] + 1][location[1]]['state'] != 'empty':
-            return True
-        else:
+        if str(board[location[0] + 1][location[1]]['state']) == 'food' or str(board[location[0] + 1][location[1]]['state'] == 'empty'):
             return False
+        else:
+            return True
     else:
         print("here")
         return True
 
 def check_left(location, board):
     if location[1] < 0:
-        if board[location[0]][location[1] - 1]['state'] != 'food' or board[location[0]][location[1] - 1]['state'] != 'empty':
-            return True
-        else:
+        if str(board[location[0]][location[1] - 1]['state']) == 'food' or str(board[location[0]][location[1] - 1]['state']) == 'empty':
             return False
+        else:
+            return True
     else:
         print("here")
         return True
 def check_right(location, board):
     if location[1] > (len(board[0]) - 1):
-        if board[location[0]][location[1] + 1]['state'] != 'food' or board[location[0]][location[1] + 1]['state'] != 'empty':
-            return True
-        else:
+        if str(board[location[0]][location[1] + 1]['state']) == 'food' or str(board[location[0]][location[1] + 1]['state']) == 'empty':
             return False
+        else:
+            return True
     else:
         print("here")
         return True
