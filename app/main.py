@@ -151,14 +151,26 @@ def eachTurnMove(curX, curY, nextX, nextY):
     #Step 1. Determine which is a greater change, the x or y
     #Step 2. Move left or right depending on blahh
 
-    dX = curX - nextX
-    dy = curY - nextY
+    dX = abs(curX - nextX)
+    dy = abs(curY - nextY)
 
     if(dX > dY):
         #goal here is to see which the smaller straight line is
-        pass
+        #dX > dY would mean that we want to do UP/DOWN FIRST then do left/right
+        if(curY > nextY):
+            return moveDown()
+        elif(curY < nextY):
+            return  moveUp()
+
+
     else:
-        pass
+        #means that left/right is the shortest line to the object
+        if(curX > nextX):
+            #goLeft
+            return moveLeft()
+        elif(curX < nextX):
+            #goRight
+            return moveRight()
 
 
     if(curX > nextX):
