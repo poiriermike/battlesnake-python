@@ -121,8 +121,7 @@ def move():
     snakes = data["snakes"]
     board = data['board']
 
-    print ("Snakes" + str(snakes))
-    #print(str((check_up(snakes[snakeName][0], board))))
+    print(str((check_up(snakes[0][0], board))))
 
     snakeHeads = []
     for i in range(0, len(snakes)):
