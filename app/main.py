@@ -38,11 +38,11 @@ def findBestFood(orderedFoodList, orderedSnakeList):
         for j in range(0, len(orderedSnakeList)):
             if( getDistance(item, orderedSnakeList[j]) < getDistance(item, ourSnakeHead)):
                 #someone is closer - ignore the food
-                break;
+                break
             else: #we are closer, go for this food
                 return item #return the item position
 
-
+    # we are not closest to any food, define default behaviour
 
     return orderedFoodList[0]
 
@@ -121,7 +121,7 @@ def move():
     snakes = data["snakes"]
     board = data['board']
 
-    print (check_up(snakes[snakeName][0], board))
+    print(str((check_up(snakes[snakeName][0], board))))
 
     snakeHeads = []
     for i in range(0, len(snakes)):
