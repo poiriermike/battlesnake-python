@@ -126,7 +126,8 @@ def move():
 
     snakeHeads = []
     for i in range(0, len(snakes)):
-        snakeHeads.add(snakes["coords"][0])
+        if(snakes[i]["name"] != snakeName):
+            snakeHeads.add(snakes[i]["coords"][0])
 
     global ourSnakeHead
 
