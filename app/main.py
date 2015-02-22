@@ -121,7 +121,7 @@ def move():
     snakes = data["snakes"]
     board = data['board']
 
-    print(str((check_up(snakes[0]['cooreds'][0], board))))
+    print(str((check_up(snakes[0]['coords'][0], board))))
 
     global ourSnakeHead
     enemySnakeHeads = []
