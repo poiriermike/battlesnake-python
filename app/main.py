@@ -123,17 +123,16 @@ def move():
 
     print(str((check_up(snakes[0][0], board))))
 
-    snakeHeads = []
-    for i in range(0, len(snakes)):
-        if(snakes[i]["name"] != snakeName):
-            snakeHeads.add(snakes[i]["coords"][0])
-
     global ourSnakeHead
-
-    ourSnakeHead = [0,0] # We need to update this somehow
+    enemySnakeHeads = []
+    for i in range(0, len(snakes)):
+        if(snakes[i]["name"] == snakeName):
+            ourSnakeHead = snakes[i]["coords"][0] # set our snake head position
+        else:
+            enemySnakeHeads.add(snakes[i]["coords"][0]) #add enemy snake
 
     if(True):#if go for food
-        return checkFood(food, snakeHeads)
+        return checkFood(food, enemySnakeHeads)
     elif(False): #not going for food
         pass #do nothing, remove later
     #more cases here
