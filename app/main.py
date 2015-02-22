@@ -177,8 +177,8 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
         #Check each for current moving direction
             #return the fitting stuffs
 
-    dX = abs(curX - nextX)
-    dY = abs(curY - nextY)
+    dX = abs(nextX - curX)
+    dY = abs(nextY - curY)
 
 
     #Goal position is to the right
