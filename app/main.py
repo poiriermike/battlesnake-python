@@ -40,10 +40,6 @@ def findBestFood(orderedFoodList, orderedSnakeList):
 
 
 def check_left(location, board):
-    print(location)
-    print(len(board))
-    print(len(board[0]))
-    print(board[location[0] - 1][location[1]]['state'])
     if int(location[0]) > 0:
         if str(board[location[0] - 1][location[1]]['state']) == 'food' or str(board[location[0] - 1][location[1]]['state']) == 'empty':
             return False
