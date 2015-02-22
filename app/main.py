@@ -4,6 +4,7 @@ import math
 
 
 ourSnakeHead = [0,0]
+ourSnake = []
 snakeName = "cscusnake"
 
 def getDistance(itemA, itemB=ourSnakeHead):
@@ -121,14 +122,14 @@ def moveRight(taunt = ""):
 def checkFood(foodList, enemySnakePos):
     global ourSnakeHead
 
-    sortedFood = sortListByDist(foodList)
-    sortedEnemyPos = sortListByDist(enemySnakePos)
+    orderedFoodList = sortListByDist(foodList)
+    orderedSnakeList = sortListByDist(enemySnakePos)
 
     #get the best food to go for
     foodPos = findBestFood(orderedFoodList, orderedSnakeList)
 
     #determine which way to go here
-    return eachTurnMove(ourSnakeHead[0], ourSnakeHead[1], foodPos[0], foodPos[1])
+    return eachTurnMove(ourSnakeHead[0], ourSnakeHead[1], foodPos[0], foodPos[1], ourSnake[1][0], ourSnake[1][1])
 
 
 @bottle.post('/move')
@@ -146,10 +147,12 @@ def move():
     print("Right " + str((check_right(snakes[0]['coords'][0], board))))
 
     global ourSnakeHead
+    global ourSnake
     enemySnakeHeads = []
     for i in range(0, len(snakes)):
         if(snakes[i]["name"] == snakeName):
             ourSnakeHead = snakes[i]["coords"][0] # set our snake head position
+            ourSnake = snakes[i]["coords"] # save our snake
         else:
             enemySnakeHeads.add(snakes[i]["coords"][0]) #add enemy snake
 
