@@ -136,7 +136,10 @@ def move():
     board = data['board']
 
     print (snakes)
-    print(str((check_up(snakes[0]['coords'][0], board))))
+    print("Up " + str((check_up(snakes[0]['coords'][0], board))))
+    print("Down " + str((check_down(snakes[0]['coords'][0], board))))
+    print("Left " + str((check_left(snakes[0]['coords'][0], board))))
+    print("Right " + str((check_right(snakes[0]['coords'][0], board))))
 
     global ourSnakeHead
     enemySnakeHeads = []
