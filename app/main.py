@@ -45,6 +45,7 @@ def check_up(location, board):
         else:
             return False
     else:
+        print("here")
         return True
 def check_down(location, board):
     if location[0] < len(board) - 1:
@@ -53,6 +54,7 @@ def check_down(location, board):
         else:
             return False
     else:
+        print("here")
         return True
 
 def check_left(location, board):
@@ -62,6 +64,7 @@ def check_left(location, board):
         else:
             return False
     else:
+        print("here")
         return True
 def check_right(location, board):
     if location[1] < len(board) - 1:
@@ -70,6 +73,7 @@ def check_right(location, board):
         else:
             return False
     else:
+        print("here")
         return True
 
 @bottle.get('/')
