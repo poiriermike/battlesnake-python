@@ -44,7 +44,7 @@ def check_up(location, board):
     print(len(board))
     print(len(board[0]))
     print(board[location[0] - 1][location[1]]['state'])
-    if location[0] > 0:
+    if int(location[0]) > 0:
         if str(board[location[0] - 1][location[1]]['state']) == 'food' or str(board[location[0] - 1][location[1]]['state']) == 'empty':
             return False
         else:
