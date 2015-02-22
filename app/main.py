@@ -177,8 +177,8 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
         #Check each for current moving direction
             #return the fitting stuffs
 
-    dX = abs(nextX - curX)
-    dY = abs(nextY - curY)
+    dX = abs(curX - nextX)
+    dY = abs(curY - nextY)
 
 
     #Goal position is to the right
@@ -187,9 +187,9 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
             return moveRight()
         if(curX - prevX > 0 ):
 
-            if( dY < 0):
-                return moveUp()
             if( dY > 0):
+                return moveUp()
+            if( dY < 0):
                 return moveDown()
         else:
             return moveRight()
@@ -202,9 +202,9 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
             return moveLeft()
         if(curX - prevX < 0 ):
 
-            if( dY < 0):
-                return moveUp()
             if( dY > 0):
+                return moveUp()
+            if( dY < 0):
                 return moveDown()
         else:
             return moveLeft()
