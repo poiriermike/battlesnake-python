@@ -39,11 +39,7 @@ def findBestFood(orderedFoodList, orderedSnakeList):
     return orderedFoodList[0]
 
 
-def check_up(location, board):
-    print(location)
-    print(len(board))
-    print(len(board[0]))
-    print(board[location[0] - 1][location[1]]['state'])
+def check_left(location, board):
     if int(location[0]) > 0:
         if str(board[location[0] - 1][location[1]]['state']) == 'food' or str(board[location[0] - 1][location[1]]['state']) == 'empty':
             return False
@@ -52,8 +48,8 @@ def check_up(location, board):
     else:
         print("here")
         return True
-def check_down(location, board):
-    if location[0] > (len(board) - 1):
+def check_right(location, board):
+    if int(location[0]) < (len(board) - 1):
         if str(board[location[0] + 1][location[1]]['state']) == 'food' or str(board[location[0] + 1][location[1]]['state'] == 'empty'):
             return False
         else:
@@ -62,8 +58,8 @@ def check_down(location, board):
         print("here")
         return True
 
-def check_left(location, board):
-    if location[1] < 0:
+def check_up(location, board):
+    if int(location[1]) > 0:
         if str(board[location[0]][location[1] - 1]['state']) == 'food' or str(board[location[0]][location[1] - 1]['state']) == 'empty':
             return False
         else:
@@ -71,8 +67,8 @@ def check_left(location, board):
     else:
         print("here")
         return True
-def check_right(location, board):
-    if location[1] > (len(board[0]) - 1):
+def check_down(location, board):
+    if int(location[1]) < (len(board[0]) - 1):
         if str(board[location[0]][location[1] + 1]['state']) == 'food' or str(board[location[0]][location[1] + 1]['state']) == 'empty':
             return False
         else:
