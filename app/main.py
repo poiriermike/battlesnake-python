@@ -47,20 +47,31 @@ def checkFood(foodList, enemySnakePos):
     return moveDown() #determine which way to go here
 
 
-def check_up(location, board, distance=1):
-
-
+def check_up(location, board):
     if location[0] > 0:
-        if board[location[0] - 1][location[1]]['state'] != 'food' or  board[location[0] - 1][location[1]]['state'] != 'food':
+        if board[location[0] - 1][location[1]]['state'] != 'food' or board[location[0] - 1][location[1]]['state'] != 'food':
             return False
     else:
         return True
-def check_down(location, snakes, distance=1):
-    pass
-def check_left(location, snakes, distance=1):
-    pass
-def check_right(location, snakes, distance=1):
-    pass
+def check_down(location, board):
+    if location[0] < len(board) - 1:
+        if board[location[0] + 1][location[1]]['state'] != 'food' or board[location[0] + 1][location[1]]['state'] != 'food':
+            return False
+    else:
+        return True
+
+def check_left(location, board):
+    if location[1] < 0:
+        if board[location[0]][location[1] - 1]['state'] != 'food' or board[location[0]][location[1] - 1]['state'] != 'food':
+            return False
+    else:
+        return True
+def check_right(location, board):
+    if location[1] < len(board) - 1:
+        if board[location[0]][location[1] + 1]['state'] != 'food' or board[location[0]][location[1] + 1]['state'] != 'food':
+            return False
+    else:
+        return True
 
 @bottle.get('/')
 def index():
