@@ -50,12 +50,16 @@ def checkFood(foodList, enemySnakePos):
 def check_up(location, board):
     if location[0] > 0:
         if board[location[0] - 1][location[1]]['state'] != 'food' or board[location[0] - 1][location[1]]['state'] != 'empty':
+            return True
+        else:
             return False
     else:
         return True
 def check_down(location, board):
     if location[0] < len(board) - 1:
         if board[location[0] + 1][location[1]]['state'] != 'food' or board[location[0] + 1][location[1]]['state'] != 'empty':
+            return True
+        else:
             return False
     else:
         return True
@@ -63,12 +67,16 @@ def check_down(location, board):
 def check_left(location, board):
     if location[1] < 0:
         if board[location[0]][location[1] - 1]['state'] != 'food' or board[location[0]][location[1] - 1]['state'] != 'empty':
+            return True
+        else:
             return False
     else:
         return True
 def check_right(location, board):
     if location[1] < len(board) - 1:
         if board[location[0]][location[1] + 1]['state'] != 'food' or board[location[0]][location[1] + 1]['state'] != 'empty':
+            return True
+        else:
             return False
     else:
         return True
