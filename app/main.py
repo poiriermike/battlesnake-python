@@ -40,6 +40,7 @@ def findBestFood(orderedFoodList, orderedSnakeList):
 
 
 def check_up(location, board):
+    print(location)
     if location[0] > 0:
         if board[location[0] - 1][location[1]]['state'] != 'food' or board[location[0] - 1][location[1]]['state'] != 'empty':
             return True
