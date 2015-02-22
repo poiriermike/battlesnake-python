@@ -201,7 +201,7 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
             return moveDown()
 
     #Goal pos to the left
-    if(curX - nextX < 0 and curY - nextY == 0):
+    if(curX - nextX > 0 and curY - nextY == 0):
         if(curX - prevX < 0 and curY - prevY == 0):
             if(dX < dY):
                 return moveDown()
@@ -214,7 +214,7 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
         if(curX - prevX == 0 and curY - prevY > 0):
             return moveDown()
     #Goal pos to up
-    if(curX - nextX < 0 and curY - nextY == 0):
+    if(curX - nextX == 0 and curY - nextY < 0):
         if(curX - prevX < 0 and curY - prevY == 0):
             return moveRight()
         if(curX - prevX > 0 and curY - prevY == 0):
@@ -227,7 +227,7 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
             else:
                 moveDown()
     #Goal is to move down
-    if(curX - nextX < 0 and curY - nextY == 0):
+    if(curX - nextX == 0 and curY - nextY > 0):
         if(curX - prevX < 0 and curY - prevY == 0):
             return moveRight()
         if(curX - prevX > 0 and curY - prevY == 0):
