@@ -189,82 +189,64 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
 
 
     #Goal position is to the right
-    if(curX - nextX > 0 and curY - nextY == 0):
-        if(curX - prevX > 0 and curY - prevY == 0):
-            return None
+    if(curX - nextX < 0 and curY - nextY == 0):
         if(curX - prevX < 0 and curY - prevY == 0):
+            return None
+        if(curX - prevX > 0 and curY - prevY == 0):
             #check the shorter line
-            if(dX > dY):
+            if(dX < dY):
                 return moveDown()
             else:
                 return moveLeft()
-        if(curX - prevX == 0 and curY - prevY > 0):
+        if(curX - prevX == 0 and curY - prevY < 0):
             return moveUp()
-        if(curX - prevX < 0 and curY - prevY < 0):
+        if(curX - prevX == 0 and curY - prevY > 0):
             return moveDown()
 
     #Goal pos to the left
-    if(curX - nextX > 0 and curY - nextY == 0):
-        if(curX - prevX > 0 and curY - prevY == 0):
-            if(dX > dY):
+    if(curX - nextX < 0 and curY - nextY == 0):
+        if(curX - prevX < 0 and curY - prevY == 0):
+            if(dX < dY):
                 return moveDown()
             else:
                 return moveRight()
-        if(curX - prevX < 0 and curY - prevY == 0):
+        if(curX - prevX > 0 and curY - prevY == 0):
             return None
-        if(curX - prevX == 0 and curY - prevY > 0):
+        if(curX - prevX == 0 and curY - prevY < 0):
             return moveUp()
-        if(curX - prevX < 0 and curY - prevY < 0):
+        if(curX - prevX == 0 and curY - prevY > 0):
             return moveDown()
     #Goal pos to up
-    if(curX - nextX > 0 and curY - nextY == 0):
-        if(curX - prevX > 0 and curY - prevY == 0):
-            return moveRight()
+    if(curX - nextX < 0 and curY - nextY == 0):
         if(curX - prevX < 0 and curY - prevY == 0):
+            return moveRight()
+        if(curX - prevX > 0 and curY - prevY == 0):
             return moveLeft()
-        if(curX - prevX == 0 and curY - prevY > 0):
+        if(curX - prevX == 0 and curY - prevY < 0):
             return None
-        if(curX - prevX < 0 and curY - prevY < 0):
-            if(dX > dY):
+        if(curX - prevX == 0 and curY - prevY > 0):
+            if(dX < dY):
                 moveUp()
             else:
                 moveDown()
     #Goal is to move down
-    if(curX - nextX > 0 and curY - nextY == 0):
-        if(curX - prevX > 0 and curY - prevY == 0):
-            return moveRight()
+    if(curX - nextX < 0 and curY - nextY == 0):
         if(curX - prevX < 0 and curY - prevY == 0):
+            return moveRight()
+        if(curX - prevX > 0 and curY - prevY == 0):
             return moveLeft()
-        if(curX - prevX == 0 and curY - prevY > 0):
-            if(dX > dY):
+        if(curX - prevX == 0 and curY - prevY < 0):
+            if(dX < dY):
                 return moveLeft()
             else:
                 return moveDown()
-        if(curX - prevX < 0 and curY - prevY < 0):
+        if(curX - prevX == 0 and curY - prevY > 0):
             return None
 
     #How to get head and head-1 coords
 
 
 
-
-    if(dX > dY):
-        #goal here is to see which the smaller straight line is
-        #dX > dY would mean that we want to do UP/DOWN FIRST then do left/right
-        if(curY > nextY):
-            return moveDown()
-        elif(curY < nextY):
-            return moveUp()
-
-
-    else:
-        #means that left/right is the shortest line to the object
-        if(curX > nextX):
-            #goLeft
-            return moveLeft()
-        elif(curX < nextX):
-            #goRight
-            return moveRight()
 
 
 
