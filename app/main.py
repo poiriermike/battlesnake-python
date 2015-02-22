@@ -102,25 +102,21 @@ def start():
     })
 
 
-def moveUp(taunt=null):
+def moveUp():
     return json.dumps({
-        'move': 'up',
-        'taunt': taunt
+        'move': 'up'
     })
-def moveDown(taunt=null):
+def moveDown():
     return json.dumps({
-        'move': 'down',
-        'taunt': taunt
+        'move': 'down'
     })
-def moveLeft(taunt=null):
+def moveLeft():
     return json.dumps({
-        'move': 'left',
-        'taunt': taunt
+        'move': 'left'
     })
-def moveRight(taunt=null):
+def moveRight():
     return json.dumps({
-        'move': 'right',
-        'taunt': taunt
+        'move': 'right'
     })
 
 def checkFood(foodList, enemySnakePos):
