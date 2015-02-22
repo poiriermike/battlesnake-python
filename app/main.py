@@ -4,6 +4,7 @@ import math
 
 
 ourSnakeHead = [0,0]
+ourSnake = []
 snakeName = "cscusnake"
 
 def getDistance(itemA, itemB=ourSnakeHead):
@@ -39,20 +40,23 @@ def findBestFood(orderedFoodList, orderedSnakeList):
 
 
 def check_up(location, board):
+    print(location)
     if location[0] > 0:
         if board[location[0] - 1][location[1]]['state'] != 'food' or board[location[0] - 1][location[1]]['state'] != 'empty':
             return True
         else:
             return False
     else:
+        print("here")
         return True
 def check_down(location, board):
-    if location[0] < len(board) - 1:
+    if location[0] > len(board) - 1:
         if board[location[0] + 1][location[1]]['state'] != 'food' or board[location[0] + 1][location[1]]['state'] != 'empty':
             return True
         else:
             return False
     else:
+        print("here")
         return True
 
 def check_left(location, board):
@@ -62,14 +66,16 @@ def check_left(location, board):
         else:
             return False
     else:
+        print("here")
         return True
 def check_right(location, board):
-    if location[1] < len(board) - 1:
+    if location[1] > len(board) - 1:
         if board[location[0]][location[1] + 1]['state'] != 'food' or board[location[0]][location[1] + 1]['state'] != 'empty':
             return True
         else:
             return False
     else:
+        print("here")
         return True
 
 @bottle.get('/')
@@ -117,14 +123,14 @@ def moveRight(taunt = ""):
 def checkFood(foodList, enemySnakePos):
     global ourSnakeHead
 
-    sortedFood = sortListByDist(foodList)
-    sortedEnemyPos = sortListByDist(enemySnakePos)
+    orderedFoodList = sortListByDist(foodList)
+    orderedSnakeList = sortListByDist(enemySnakePos)
 
     #get the best food to go for
     foodPos = findBestFood(orderedFoodList, orderedSnakeList)
 
     #determine which way to go here
-    return eachTurnMove(ourSnakeHead[0], ourSnakeHead[1], foodPos[0], foodPos[1])
+    return eachTurnMove(ourSnakeHead[0], ourSnakeHead[1], foodPos[0], foodPos[1], ourSnake[1][0], ourSnake[1][1])
 
 
 @bottle.post('/move')
@@ -142,10 +148,12 @@ def move():
     print("Right " + str((check_right(snakes[0]['coords'][0], board))))
 
     global ourSnakeHead
+    global ourSnake
     enemySnakeHeads = []
     for i in range(0, len(snakes)):
         if(snakes[i]["name"] == snakeName):
             ourSnakeHead = snakes[i]["coords"][0] # set our snake head position
+            ourSnake = snakes[i]["coords"] # save our snake
         else:
             enemySnakeHeads.add(snakes[i]["coords"][0]) #add enemy snake
 
