@@ -5,17 +5,8 @@ import math
 
 ourSnakeHead = [0,0]
 snakeName = "cscusnake"
-def getDistance(item):
 
-    dx = ourSnakeHead[0] - item[0]
-    dy = ourSnakeHead[1] - item[1]
-
-    dx = math.fabs(dx)
-    dy = math.fabs(dy)
-
-    return dx + dy
-
-def getDistance(itemA, itemB):
+def getDistance(itemA, itemB=ourSnakeHead):
 
     dx = itemA[0] - itemB[0]
     dy = itemA[1] - itemB[1]
@@ -47,29 +38,39 @@ def findBestFood(orderedFoodList, orderedSnakeList):
     return orderedFoodList[0]
 
 
-
-def checkFood(foodList, enemySnakePos):
-
-    sortedFood = sortListByDist(foodList)
-    sortedEnemyPos = sortListByDist(enemySnakePos)
-
-    return moveDown() #determine which way to go here
-
-
-def check_up(location, board, distance=1):
-
-
+def check_up(location, board):
     if location[0] > 0:
-        if board[location[0] - 1][location[1]]['state'] != 'food' or  board[location[0] - 1][location[1]]['state'] != 'food':
+        if board[location[0] - 1][location[1]]['state'] != 'food' or board[location[0] - 1][location[1]]['state'] != 'empty':
+            return True
+        else:
             return False
     else:
         return True
-def check_down(location, snakes, distance=1):
-    pass
-def check_left(location, snakes, distance=1):
-    pass
-def check_right(location, snakes, distance=1):
-    pass
+def check_down(location, board):
+    if location[0] < len(board) - 1:
+        if board[location[0] + 1][location[1]]['state'] != 'food' or board[location[0] + 1][location[1]]['state'] != 'empty':
+            return True
+        else:
+            return False
+    else:
+        return True
+
+def check_left(location, board):
+    if location[1] < 0:
+        if board[location[0]][location[1] - 1]['state'] != 'food' or board[location[0]][location[1] - 1]['state'] != 'empty':
+            return True
+        else:
+            return False
+    else:
+        return True
+def check_right(location, board):
+    if location[1] < len(board) - 1:
+        if board[location[0]][location[1] + 1]['state'] != 'food' or board[location[0]][location[1] + 1]['state'] != 'empty':
+            return True
+        else:
+            return False
+    else:
+        return True
 
 @bottle.get('/')
 def index():
@@ -113,6 +114,19 @@ def moveRight(taunt = ""):
         'taunt': taunt
     })
 
+def checkFood(foodList, enemySnakePos):
+    global ourSnakeHead
+
+    sortedFood = sortListByDist(foodList)
+    sortedEnemyPos = sortListByDist(enemySnakePos)
+
+    #get the best food to go for
+    foodPos = findBestFood(orderedFoodList, orderedSnakeList)
+
+    #determine which way to go here
+    return eachTurnMove(ourSnakeHead[0], ourSnakeHead[1], foodPos[0], foodPos[1])
+
+
 @bottle.post('/move')
 def move():
     data = bottle.request.json
@@ -121,6 +135,7 @@ def move():
     snakes = data["snakes"]
     board = data['board']
 
+    print (snakes)
     print(str((check_up(snakes[0]['coords'][0], board))))
 
     global ourSnakeHead
