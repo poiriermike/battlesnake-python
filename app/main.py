@@ -43,6 +43,7 @@ def check_up(location, board):
     print(location)
     print(len(board))
     print(len(board[0]))
+    print(board[location[0] - 1][location[1]]['state'])
     if location[0] > 0:
         if board[location[0] - 1][location[1]]['state'] != 'food' or board[location[0] - 1][location[1]]['state'] != 'empty':
             return True
@@ -101,22 +102,22 @@ def start():
     })
 
 
-def moveUp(taunt = ""):
+def moveUp(taunt=null):
     return json.dumps({
         'move': 'up',
         'taunt': taunt
     })
-def moveDown(taunt = ""):
+def moveDown(taunt=null):
     return json.dumps({
         'move': 'down',
         'taunt': taunt
     })
-def moveLeft(taunt = ""):
+def moveLeft(taunt=null):
     return json.dumps({
         'move': 'left',
         'taunt': taunt
     })
-def moveRight(taunt = ""):
+def moveRight(taunt=null):
     return json.dumps({
         'move': 'right',
         'taunt': taunt
