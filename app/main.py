@@ -173,15 +173,6 @@ def eachTurnMove(curX, curY, nextX, nextY):
             return moveRight()
 
 
-    if(curX > nextX):
-        #goLeft
-        moveLeft()
-    elif(curX < nextX):
-        #goRight
-        moveRight()
-    elif(curX == nextX):
-        #goStraight
-        pass
 
 
 @bottle.post('/end')
