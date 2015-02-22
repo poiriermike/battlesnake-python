@@ -38,15 +38,6 @@ def findBestFood(orderedFoodList, orderedSnakeList):
     return orderedFoodList[0]
 
 
-
-def checkFood(foodList, enemySnakePos):
-
-    sortedFood = sortListByDist(foodList)
-    sortedEnemyPos = sortListByDist(enemySnakePos)
-
-    return moveDown() #determine which way to go here
-
-
 def check_up(location, board):
     if location[0] > 0:
         if board[location[0] - 1][location[1]]['state'] != 'food' or board[location[0] - 1][location[1]]['state'] != 'food':
@@ -114,6 +105,19 @@ def moveRight(taunt = ""):
         'move': 'right',
         'taunt': taunt
     })
+
+def checkFood(foodList, enemySnakePos):
+    global ourSnakeHead
+
+    sortedFood = sortListByDist(foodList)
+    sortedEnemyPos = sortListByDist(enemySnakePos)
+
+    #get the best food to go for
+    foodPos = findBestFood(orderedFoodList, orderedSnakeList)
+
+    #determine which way to go here
+    return eachTurnMove(ourSnakeHead[0], ourSnakeHead[1], foodPos[0], foodPos[1])
+
 
 @bottle.post('/move')
 def move():
