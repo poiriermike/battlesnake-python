@@ -5,17 +5,8 @@ import math
 
 ourSnakeHead = [0,0]
 snakeName = "cscusnake"
-def getDistance(item):
 
-    dx = ourSnakeHead[0] - item[0]
-    dy = ourSnakeHead[1] - item[1]
-
-    dx = math.fabs(dx)
-    dy = math.fabs(dy)
-
-    return dx + dy
-
-def getDistance(itemA, itemB):
+def getDistance(itemA, itemB=ourSnakeHead):
 
     dx = itemA[0] - itemB[0]
     dy = itemA[1] - itemB[1]
