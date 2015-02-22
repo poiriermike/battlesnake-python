@@ -146,6 +146,21 @@ def move():
 #Callum doing things don't worry about this
 def eachTurnMove(curX, curY, nextX, nextY):
 
+    #goal is to give in the current position
+    # (get tht from the head and pass it in here)
+    #Step 1. Determine which is a greater change, the x or y
+    #Step 2. Move left or right depending on blahh
+
+    dX = curX - nextX
+    dy = curY - nextY
+
+    if(dX > dY):
+        #goal here is to see which the smaller straight line is
+        pass
+    else:
+        pass
+
+
     if(curX > nextX):
         #goLeft
         moveLeft()
@@ -154,7 +169,7 @@ def eachTurnMove(curX, curY, nextX, nextY):
         moveRight()
     elif(curX == nextX):
         #goStraight
-        None
+        pass
 
 
 @bottle.post('/end')
