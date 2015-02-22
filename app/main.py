@@ -38,7 +38,7 @@ def findBestFood(orderedFoodList, orderedSnakeList):
         for j in range(0, len(orderedSnakeList)):
             if( getDistance(item, orderedSnakeList[j]) < getDistance(item, ourSnakeHead)):
                 #someone is closer - ignore the food
-                break;
+                break
             else: #we are closer, go for this food
                 return item #return the item position
 
