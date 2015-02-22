@@ -170,11 +170,49 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
     #Step 2. Move left or right depending on blahh
 
 
+    #Check Goal positon for r, l, u, d
+        #Check each for current moving direction
+            #return the fitting stuffs
+
+    dX = abs(curX - nextX)
+    dY = abs(curY - nextY)
+
+
+    #Goal position is to the right
+    if(curX - nextX > 0 and curY - nextY == 0):
+        if(curX - prevX > 0 and curY - prevY == 0):
+            return None
+        if(curX - prevX < 0 and curY - prevY == 0):
+            #check the shorter line
+            if(dX > dY):
+                return moveDown()
+            else:
+                return moveLeft()
+        if(curX - prevX == 0 and curY - prevY > 0):
+            return moveUp()
+        if(curX - prevX < 0 and curY - prevY < 0):
+            return moveDown()
+
+    #Goal pos to the left
+    if(curX - nextX > 0 and curY - nextY == 0):
+        if(curX - prevX > 0 and curY - prevY == 0):
+            return None
+        if(curX - prevX < 0 and curY - prevY == 0):
+            #check the shorter line
+            if(dX > dY):
+                return moveDown()
+            else:
+                return moveLeft()
+        if(curX - prevX == 0 and curY - prevY > 0):
+            return moveUp()
+        if(curX - prevX < 0 and curY - prevY < 0):
+            return moveDown()
+
+
     #How to get head and head-1 coords
 
 
-    dX = abs(curX - nextX)
-    dy = abs(curY - nextY)
+
 
     if(dX > dY):
         #goal here is to see which the smaller straight line is
