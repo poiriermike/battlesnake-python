@@ -42,7 +42,7 @@ def findBestFood(orderedFoodList, orderedSnakeList):
             else: #we are closer, go for this food
                 return item #return the item position
 
-
+    # we are not closest to any food, define default behaviour
 
     return orderedFoodList[0]
 
