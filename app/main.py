@@ -186,54 +186,55 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
         if(curX - prevX < 0 ):
             return moveRight()
         if(curX - prevX > 0 ):
-            #check the shorter line
-            if(dX < dY):
+
+            if( dY < 0):
+                return moveUp()
+            if( dY > 0):
                 return moveDown()
-            else:
-                return moveLeft()
-        if( curY - prevY < 0):
-            return moveUp()
-        if( curY - prevY > 0):
-            return moveDown()
+        else:
+            return moveRight()
+
 
     #Goal pos to the left
+
     if(curX - nextX > 0 ):
-        if(curX - prevX < 0 ):
-            if(dX < dY):
-                return moveDown()
-            else:
-                return moveRight()
         if(curX - prevX > 0 ):
             return moveLeft()
-        if( curY - prevY < 0):
-            return moveUp()
-        if( curY - prevY > 0):
-            return moveDown()
+        if(curX - prevX < 0 ):
+
+            if( dY < 0):
+                return moveUp()
+            if( dY > 0):
+                return moveDown()
+        else:
+            return moveLeft()
+
     #Goal pos to up
-    if( curY - nextY < 0):
-        if(curX - prevX < 0 ):
-            return moveRight()
-        if(curX - prevX > 0 ):
-            return moveLeft()
-        if( curY - prevY < 0):
+
+    if(curY - nextY < 0 ):
+        if(curY - prevY < 0 ):
             return moveUp()
-        if( curY - prevY > 0):
-            if(dX < dY):
-                moveUp()
-            else:
-                moveDown()
-    #Goal is to move down
-    if( curY - nextY > 0):
-        if(curX - prevX < 0 ):
-            return moveRight()
-        if(curX - prevX > 0 ):
-            return moveLeft()
-        if(curY - prevY < 0):
-            if(dX < dY):
+        if(curY - prevY > 0 ):
+
+            if( dX < 0):
+                return moveRight()
+            if( dX > 0):
                 return moveLeft()
-            else:
-                return moveDown()
-        if( curY - prevY > 0):
+        else:
+            return moveUp()
+
+    #Goal is to move down
+
+    if(curY - nextY > 0 ):
+        if(curY - prevY > 0 ):
+            return moveDown()
+        if(curY - prevY > 0 ):
+
+            if( dX < 0):
+                return moveRight()
+            if( dX > 0):
+                return moveLeft()
+        else:
             return moveDown()
 
     #How to get head and head-1 coords
