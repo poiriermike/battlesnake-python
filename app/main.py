@@ -228,7 +228,7 @@ def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
     if(curY - nextY > 0 ):
         if(curY - prevY > 0 ):
             return moveDown()
-        if(curY - prevY > 0 ):
+        if(curY - prevY < 0 ):
 
             if( dX < 0):
                 return moveRight()
