@@ -144,12 +144,16 @@ def move():
     })
 
 #Callum doing things don't worry about this
-def eachTurnMove(curX, curY, nextX, nextY):
+def eachTurnMove(curX, curY, nextX, nextY, prevX, prevY):
 
     #goal is to give in the current position
     # (get tht from the head and pass it in here)
     #Step 1. Determine which is a greater change, the x or y
     #Step 2. Move left or right depending on blahh
+
+
+    #How to get head and head-1 coords
+
 
     dX = abs(curX - nextX)
     dy = abs(curY - nextY)
@@ -160,7 +164,7 @@ def eachTurnMove(curX, curY, nextX, nextY):
         if(curY > nextY):
             return moveDown()
         elif(curY < nextY):
-            return  moveUp()
+            return moveUp()
 
 
     else:
